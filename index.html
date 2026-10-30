@@ -1,25 +1,25 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#17863b"><meta name="description" content="RESCENE VOTE 팬메이드 투표 인증 카드">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><title>RESCENE VOTE 2.1</title>
+<meta name="theme-color" content="#448d79"><meta name="description" content="RESCENE VOTE 팬메이드 투표 인증 카드">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><title>RESCENE VOTE 3.0</title>
 <style>
-:root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#173621;background:#f0f7ed}*{box-sizing:border-box}body{margin:0}.wrap{max-width:760px;margin:auto;padding:20px 15px 65px}
-.hero{background:linear-gradient(125deg,#087f35,#65bb78);color:white;padding:24px;border-radius:24px}.hero h1{margin:6px 0;font-size:30px}.hero p{line-height:1.6;margin:0}.hero small{letter-spacing:2px}
+:root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#244a43;background:#eef7f3}*{box-sizing:border-box}body{margin:0}.wrap{max-width:760px;margin:auto;padding:20px 15px 65px}
+.hero{background:linear-gradient(125deg,#467d70,#9ac8b7);color:white;padding:24px;border-radius:24px}.hero h1{margin:6px 0;font-size:30px}.hero p{line-height:1.6;margin:0}.hero small{letter-spacing:2px}
 .panel{background:white;border-radius:21px;padding:18px;margin-top:16px;box-shadow:0 5px 22px #244d2010}h2{font-size:18px;margin:0 0 13px}
-.note{font-size:13px;color:#65776a;line-height:1.7}.field{display:block;margin:12px 0;font-size:14px;font-weight:700}.field input,.field select{display:block;width:100%;border:1px solid #d7e5d7;border-radius:12px;padding:12px;font:inherit;margin-top:7px;background:#fff;color:#163d24}
-input[type=file]{border:2px dashed #a5d7ac;background:#f6fbf5}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.vote{border:1px solid #e1ece1;border-radius:15px;padding:13px;margin:10px 0}.vote h3{font-size:15px;margin:0 0 8px}.actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{border:0;border-radius:13px;padding:14px 12px;background:#11883b;color:white;font-weight:800;font-size:15px;cursor:pointer;flex:1;min-width:115px}.btn.secondary{background:#e4f4e6;color:#176b32}
+.note{font-size:13px;color:#65776a;line-height:1.7}.field{display:block;margin:12px 0;font-size:14px;font-weight:700}.field input,.field select{display:block;width:100%;border:1px solid #d7e5d7;border-radius:12px;padding:12px;font:inherit;margin-top:7px;background:#fff;color:#25483e}
+input[type=file]{border:2px dashed #a4c8ba;background:#f4faf7}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.vote{border:1px solid #e1ece1;border-radius:15px;padding:13px;margin:10px 0}.vote h3{font-size:15px;margin:0 0 8px}.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:13px;padding:14px 12px;background:#407e70;color:white;font-weight:800;font-size:15px;cursor:pointer;flex:1;min-width:115px}.btn.secondary{background:#e6f3ee;color:#346c5d}
 .preview{width:100%;border-radius:12px;border:1px solid #dce8da;background:#eef7e9;display:block}.mini{max-height:250px;object-fit:contain;background:#222;border-radius:10px;max-width:100%;display:none}
-.status{font-size:13px;color:#245c33;min-height:20px}.footer{text-align:center;font-size:12px;color:#718272;margin-top:20px}.check{display:flex;gap:9px;align-items:center;font-size:14px;font-weight:700;margin:12px 0}.check input{width:18px;height:18px;accent-color:#17863b}
+.status{font-size:13px;color:#366c60;min-height:20px}.footer{text-align:center;font-size:12px;color:#718272;margin-top:20px}.check{display:flex;gap:9px;align-items:center;font-size:14px;font-weight:700;margin:12px 0}.check input{width:18px;height:18px;accent-color:#448d79}
 @media(max-width:440px){.row{grid-template-columns:1fr}.hero h1{font-size:27px}.panel{padding:15px}}
 </style></head><body><main class="wrap">
-<header class="hero"><small>FAN-MADE VOTE CARD MAKER</small><h1>RESCENE VOTE 💚</h1><p>원본 투표 캡처와 직접 고른 단체 사진으로<br>나만의 민트색 투표 인증 카드를 만드세요.</p></header>
+<header class="hero"><small>FAN-MADE VOTE CARD MAKER</small><h1>RESCENE VOTE 💚</h1><p>원본 투표 캡처와 직접 고른 단체 사진으로<br>나만의 우아한 민트색 투표 인증 카드를 만드세요.</p></header>
 <section class="panel"><h2>① 멜론 투표 캡처 업로드</h2><label class="field">투표 내역 사진<input id="file" type="file" accept="image/*"></label><img id="source" class="mini" alt="업로드한 캡처"><p class="note">원본 화면에 아티스트 사진과 투표 내역이 보이도록 캡처하세요. 개인정보는 미리 가려 주세요. 사진은 서버로 업로드되지 않습니다.</p></section>
 <section class="panel"><h2>② 인증 카드 설정</h2><div class="row"><label class="field">날짜<input id="date" type="date"></label><label class="field">카드 제목<input id="title" maxlength="24" value="투표 인증"></label></div>
 <label class="field">표시할 투표 항목 수<select id="count"><option value="3">3개</option><option value="2">2개</option><option value="1">1개</option></select></label>
-<label class="field">하단에 넣을 리센느 원본 사진 (선택)<input id="groupFile" type="file" accept="image/*"></label><img id="groupPreview" class="mini" alt="선택한 원본 단체 사진"><label class="check"><input id="showGroup" type="checkbox" checked>선택한 사진을 인증 카드 하단에 표시</label><p class="note">투명 PNG를 선택하면 흰색 사진 상자 없이 다섯 멤버가 카드 아래쪽 가로폭에 맞게 크게 표시됩니다. 원본 사진을 새로 생성하거나 얼굴을 수정하지 않습니다.</p><div id="votes"></div>
+<label class="field">하단에 넣을 리센느 원본 투명 PNG (선택)<input id="groupFile" type="file" accept="image/*"></label><img id="groupPreview" class="mini" alt="선택한 원본 단체 사진"><label class="check"><input id="showGroup" type="checkbox" checked>선택한 사진을 인증 카드 하단에 표시</label><p class="note">투명 PNG를 선택하면 흰색 사진 상자 없이 다섯 멤버가 카드 아래쪽 가로폭에 맞게 크게 표시되고, 하단에 Rescene 필기체가 겹쳐집니다. 원본 사진을 새로 생성하거나 얼굴을 수정하지 않습니다.</p><div id="votes"></div>
 <p class="note">각 항목의 시작·끝 위치는 원본 사진 높이 기준 백분율입니다. 캡처 속 아티스트 사진과 투표 기록이 함께 보이도록 조절하세요. 후보명과 횟수는 직접 입력한 내용이며 자동 검증되지 않습니다.</p></section>
-<section class="panel"><h2>③ 미리보기와 저장</h2><div class="actions"><button class="btn" id="render">인증 카드 만들기</button><button class="btn secondary" id="save">PNG 저장</button><button class="btn secondary" id="share">공유하기</button></div>
+<section class="panel"><h2>③ B 스타일 미리보기와 저장</h2><div class="actions"><button class="btn" id="render">인증 카드 만들기</button><button class="btn secondary" id="save">PNG 저장</button><button class="btn secondary" id="share">공유하기</button></div>
 <p id="status" class="status" role="status"></p><canvas id="canvas" class="preview" width="1080" height="1800" aria-label="완성 인증 카드"></canvas>
 <p class="note">인증 항목 개수에 맞춰 이미지 높이가 달라집니다. 직접 고른 사진은 원본 그대로 삽입하며 AI로 재생성하지 않습니다.</p></section>
 <section class="panel"><h2>④ 앱처럼 설치하기</h2><button class="btn secondary" id="install" style="width:100%">앱 설치하기</button><p class="note">안드로이드 Chrome에서 ⋮ → 앱 설치 또는 홈 화면에 추가를 선택할 수 있습니다.</p></section>
@@ -37,21 +37,40 @@ $('count').addEventListener('change',()=>{build();render()});build();
 $('groupFile').addEventListener('change',e=>{const f=e.target.files[0];if(groupURL)URL.revokeObjectURL(groupURL);groupURL=null;groupReady=false;if(!f){$('groupPreview').style.display='none';render();return}groupURL=URL.createObjectURL(f);$('groupPreview').src=groupURL;$('groupPreview').style.display='block';group.src=groupURL});
 $('file').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;if(sourceURL)URL.revokeObjectURL(sourceURL);sourceURL=URL.createObjectURL(f);const next=new Image();next.onload=()=>{img=next;$('source').src=sourceURL;$('source').style.display='block';render()};next.onerror=()=>{$('status').textContent='이미지를 열지 못했습니다.'};next.src=sourceURL});
 function round(x,y,w,h,r,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
-function txt(t,x,y,size,color='#173621',weight=700,max=900){ctx.font=`${weight} ${size}px system-ui,sans-serif`;ctx.fillStyle=color;ctx.fillText(String(t),x,y,max)}
-function doodle(x,y){ctx.save();ctx.strokeStyle='#a9d5b0';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x+32,y-44,x+56,y-10,x+80,y-60);ctx.stroke();for(let k=0;k<3;k++){ctx.beginPath();ctx.ellipse(x+18+k*23,y-15-k*13,16,7,-.7,0,Math.PI*2);ctx.fillStyle='#c2e5c7';ctx.fill()}ctx.restore()}
-function crop(x,y,w,h,start,end){round(x,y,w,h,16,'#151515');if(!img){txt('원본 투표 캡처 영역',x+20,y+h/2,23,'#c1dbc5',500,w-40);return}
-let a=Math.max(0,Math.min(99,Number(start)||0))/100,b=Math.min(1,Math.max(a+.01,(Number(end)||100)/100)),sy=img.height*a,sh=img.height*(b-a);
-ctx.save();ctx.beginPath();ctx.roundRect(x,y,w,h,16);ctx.clip();const scale=Math.min(w/img.width,h/sh),dw=img.width*scale,dh=sh*scale;ctx.drawImage(img,0,sy,img.width,sh,x+(w-dw)/2,y+(h-dh)/2,dw,dh);ctx.restore()}
+function txt(t,x,y,size,color='#244a43',weight=600,max=900,font='system-ui,sans-serif'){ctx.font=`${weight} ${size}px ${font}`;ctx.fillStyle=color;ctx.fillText(String(t),x,y,max)}
+function line(x,y,xx,yy,color='#b4d1c5',width=2){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.stroke()}
+function leaf(x,y,scale=1,flip=1){ctx.save();ctx.translate(x,y);ctx.scale(scale*flip,scale);ctx.strokeStyle='#8cb6a6';ctx.lineWidth=3;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(0,80);ctx.bezierCurveTo(18,40,36,10,56,-20);ctx.stroke();for(let i=0;i<4;i++){const a=i*18;ctx.fillStyle=i%2?'#c2dcd0':'#a8ccbc';ctx.beginPath();ctx.ellipse(13+a*.56,58-a,16,7,-.65,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.ellipse(28+a*.55,51-a,15,6,.55,0,Math.PI*2);ctx.fill()}ctx.restore()}
+function star(x,y,r=9){ctx.strokeStyle='#93bfae';ctx.lineWidth=2.3;line(x-r,y,x+r,y);line(x,y-r,x,y+r);ctx.fillStyle='#93bfae';ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fill()}
+function crop(x,y,w,h,start,end){round(x,y,w,h,17,'#171a19');if(!img){txt('원본 투표 캡처 영역',x+24,y+h/2,24,'#c8d9d1',500,w-48);return}let a=Math.max(0,Math.min(99,Number(start)||0))/100,b=Math.min(1,Math.max(a+.01,(Number(end)||100)/100)),sy=img.height*a,sh=img.height*(b-a);ctx.save();ctx.beginPath();ctx.roundRect(x,y,w,h,17);ctx.clip();const scale=Math.min(w/img.width,h/sh),dw=img.width*scale,dh=sh*scale;ctx.drawImage(img,0,sy,img.width,sh,x+(w-dw)/2,y+(h-dh)/2,dw,dh);ctx.restore()}
 function render(){const votes=[...document.querySelectorAll('.vote')].map(v=>Object.fromEntries([...v.querySelectorAll('input')].map(el=>[el.dataset.key,el.value]))),n=votes.length,show=$('showGroup').checked;
-const cardH=278,gap=19,groupH=(show&&groupReady)?Math.round(1010*group.height/group.width)+70:0,footerH=105,headerH=225;c.width=1080;c.height=headerH+n*cardH+(n-1)*gap+groupH+footerH;
-const H=c.height,g=ctx.createLinearGradient(0,0,1080,H);g.addColorStop(0,'#f6fcf2');g.addColorStop(1,'#dcefdc');ctx.fillStyle=g;ctx.fillRect(0,0,1080,H);
-doodle(38,93);doodle(970,H-90);round(44,42,992,153,34,'#ffffff');txt('Melon',76,110,44,'#139947',800);txt($('title').value||'투표 인증',245,110,42,'#203525',800);txt('VOTE PROOF  ·  RESCENE ♡',77,163,24,'#649f73',700);
-const ds=($('date').value||'').replaceAll('-','.');round(778,125,220,46,23,'#e6f5e7');txt(ds,795,157,25,'#236a3b',700,190);
-let y=225;votes.forEach((v,i)=>{round(44,y,992,cardH-12,26,'#ffffff');round(63,y+17,60,44,12,'#36a663');txt(String(i+1).padStart(2,'0'),75,y+48,26,'#ffffff',800);
-crop(70,y+70,555,170,v.start,v.end);txt(v.name||'후보명',652,y+98,30,'#203525',800,355);txt(v.category||'투표 부문',652,y+143,23,'#65786a',500,355);
-round(652,y+169,330,53,25,'#e8f6e9');txt('투표 '+(v.number||'0')+'회',685,y+206,31,'#177b3b',800,270);y+=cardH+gap});
-if(show&&groupReady){const x=35,py=y+10,w=1010;const h=w*group.height/group.width;ctx.drawImage(group,x,py,w,h);y+=groupH}
-txt('팬메이드 인증 카드 · 공식 투표 검증 아님',55,H-48,22,'#65876d',500);
+const headerH=295,cardH=245,gap=19,groupH=(show&&groupReady)?Math.round(1010*group.height/group.width)+95:0,footerH=115;
+c.width=1080;c.height=headerH+n*cardH+(n-1)*gap+groupH+footerH;const H=c.height;
+const g=ctx.createLinearGradient(0,0,1080,H);g.addColorStop(0,'#f7fbf8');g.addColorStop(.52,'#e7f3ed');g.addColorStop(1,'#d7ebe1');ctx.fillStyle=g;ctx.fillRect(0,0,1080,H);
+const glow=ctx.createRadialGradient(900,160,10,900,160,700);glow.addColorStop(0,'#ffffffbd');glow.addColorStop(1,'#ffffff00');ctx.fillStyle=glow;ctx.fillRect(0,0,1080,900);
+ctx.strokeStyle='#b5d2c5';ctx.lineWidth=2;ctx.strokeRect(28,28,1024,H-56);ctx.strokeStyle='#e5f2ec';ctx.strokeRect(37,37,1006,H-74);
+leaf(62,125,.95);leaf(1015,160,.9,-1);star(938,104,10);star(144,206,6);
+txt('R E S C E N E    ·    V O T E',540,103,24,'#648e7d',600,800,'Georgia,serif');
+ctx.textAlign='center';txt('Melon 투표 인증',540,181,62,'#284d44',600,900,'Georgia,"Noto Serif KR",serif');
+line(295,211,460,211);star(540,211,7);line(620,211,785,211);
+const ds=($('date').value||'').replaceAll('-','.');txt(ds+'    |    '+($('title').value||'투표 인증'),540,253,25,'#678d7f',500,860);ctx.textAlign='left';
+let y=headerH;votes.forEach((v,i)=>{
+ctx.shadowColor='#6c9a851b';ctx.shadowBlur=24;ctx.shadowOffsetY=9;round(66,y,948,cardH-15,27,'#ffffffed');ctx.shadowColor='transparent';ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+round(85,y+19,69,36,18,'#e4f2eb');txt(String(i+1).padStart(2,'0'),104,y+45,21,'#5c9b83',700);
+txt('VOTE RECORD',171,y+46,20,'#79998b',500,400,'Georgia,serif');
+crop(88,y+72,516,134,v.start,v.end);
+line(627,y+70,627,y+205,'#d7e7df',2);
+txt(v.name||'후보명',653,y+104,28,'#2a4c42',700,332);
+txt(v.category||'투표 부문',653,y+142,21,'#81968b',500,332);
+round(650,y+160,327,44,22,'#e7f3ed');txt('투표 '+(v.number||'0')+'회',687,y+190,25,'#438c70',700,260);
+y+=cardH+gap});
+if(show&&groupReady){const w=1010,h=w*group.height/group.width,x=35,py=y+9;
+ctx.save();ctx.globalAlpha=.35;const aura=ctx.createRadialGradient(540,py+h*.64,25,540,py+h*.64,510);aura.addColorStop(0,'#ffffff');aura.addColorStop(1,'#ffffff00');ctx.fillStyle=aura;ctx.fillRect(0,py-70,1080,h+140);ctx.restore();
+ctx.drawImage(group,x,py,w,h);
+// The original image is drawn directly; decorative lettering is a separate overlay.
+ctx.textAlign='center';ctx.shadowColor='#ffffffd9';ctx.shadowBlur=12;ctx.shadowOffsetY=2;
+txt('Rescene',540,py+h+12,122,'#508b78',400,800,'italic Georgia,"Times New Roman",serif');ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.textAlign='left';
+star(156,py+h-5,13);star(918,py+h-45,11);y+=groupH}
+line(125,H-94,955,H-94,'#b4d3c5',2);ctx.textAlign='center';txt('FAN-MADE  ·  NOT AN OFFICIAL VOTE VERIFICATION',540,H-56,19,'#739385',500,930,'Georgia,serif');ctx.textAlign='left';
 $('status').textContent=img?'미리보기를 확인한 뒤 PNG로 저장하세요.':'샘플 미리보기입니다. 실제 인증에는 투표 캡처를 업로드하세요.'}
 $('render').onclick=render;$('showGroup').addEventListener('change',render);$('title').addEventListener('change',render);$('date').addEventListener('change',render);
 $('save').onclick=()=>{render();if(!img){$('status').textContent='먼저 실제 투표 캡처를 업로드해 주세요.';return}if($('showGroup').checked&&groupURL&&!groupReady){$('status').textContent='선택한 단체 사진을 불러오는 중입니다.';return}c.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='RESCENE-VOTE-'+$('date').value+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)},'image/png')};
