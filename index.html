@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#17863b"><meta name="description" content="RESCENE VOTE 팬메이드 투표 인증 카드">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><title>RESCENE VOTE 2.0</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><title>RESCENE VOTE 2.1</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;color:#173621;background:#f0f7ed}*{box-sizing:border-box}body{margin:0}.wrap{max-width:760px;margin:auto;padding:20px 15px 65px}
 .hero{background:linear-gradient(125deg,#087f35,#65bb78);color:white;padding:24px;border-radius:24px}.hero h1{margin:6px 0;font-size:30px}.hero p{line-height:1.6;margin:0}.hero small{letter-spacing:2px}
@@ -13,27 +13,28 @@ input[type=file]{border:2px dashed #a5d7ac;background:#f6fbf5}.row{display:grid;
 .status{font-size:13px;color:#245c33;min-height:20px}.footer{text-align:center;font-size:12px;color:#718272;margin-top:20px}.check{display:flex;gap:9px;align-items:center;font-size:14px;font-weight:700;margin:12px 0}.check input{width:18px;height:18px;accent-color:#17863b}
 @media(max-width:440px){.row{grid-template-columns:1fr}.hero h1{font-size:27px}.panel{padding:15px}}
 </style></head><body><main class="wrap">
-<header class="hero"><small>FAN-MADE VOTE CARD MAKER</small><h1>RESCENE VOTE 💚</h1><p>원본 투표 캡처와 리센느 단체 사진으로<br>나만의 민트색 투표 인증 카드를 만드세요.</p></header>
+<header class="hero"><small>FAN-MADE VOTE CARD MAKER</small><h1>RESCENE VOTE 💚</h1><p>원본 투표 캡처와 직접 고른 단체 사진으로<br>나만의 민트색 투표 인증 카드를 만드세요.</p></header>
 <section class="panel"><h2>① 멜론 투표 캡처 업로드</h2><label class="field">투표 내역 사진<input id="file" type="file" accept="image/*"></label><img id="source" class="mini" alt="업로드한 캡처"><p class="note">원본 화면에 아티스트 사진과 투표 내역이 보이도록 캡처하세요. 개인정보는 미리 가려 주세요. 사진은 서버로 업로드되지 않습니다.</p></section>
 <section class="panel"><h2>② 인증 카드 설정</h2><div class="row"><label class="field">날짜<input id="date" type="date"></label><label class="field">카드 제목<input id="title" maxlength="24" value="투표 인증"></label></div>
 <label class="field">표시할 투표 항목 수<select id="count"><option value="3">3개</option><option value="2">2개</option><option value="1">1개</option></select></label>
-<label class="check"><input id="showGroup" type="checkbox" checked>하단에 리센느 원본 단체 사진 표시</label><div id="votes"></div>
+<label class="field">하단에 넣을 리센느 원본 사진 (선택)<input id="groupFile" type="file" accept="image/*"></label><img id="groupPreview" class="mini" alt="선택한 원본 단체 사진"><label class="check"><input id="showGroup" type="checkbox" checked>선택한 사진을 인증 카드 하단에 표시</label><p class="note">원본 사진을 그대로 사용합니다. 배경 없는 PNG를 선택하면 멤버들만 민트 배경 위에 놓입니다. 일반 JPG는 사진 배경도 함께 표시됩니다.</p><div id="votes"></div>
 <p class="note">각 항목의 시작·끝 위치는 원본 사진 높이 기준 백분율입니다. 캡처 속 아티스트 사진과 투표 기록이 함께 보이도록 조절하세요. 후보명과 횟수는 직접 입력한 내용이며 자동 검증되지 않습니다.</p></section>
 <section class="panel"><h2>③ 미리보기와 저장</h2><div class="actions"><button class="btn" id="render">인증 카드 만들기</button><button class="btn secondary" id="save">PNG 저장</button><button class="btn secondary" id="share">공유하기</button></div>
 <p id="status" class="status" role="status"></p><canvas id="canvas" class="preview" width="1080" height="1800" aria-label="완성 인증 카드"></canvas>
-<p class="note">인증 항목 개수에 맞춰 이미지 높이가 달라집니다. 리센느 단체 사진은 원본을 그대로 삽입하며 AI로 재생성하지 않습니다.</p></section>
+<p class="note">인증 항목 개수에 맞춰 이미지 높이가 달라집니다. 직접 고른 사진은 원본 그대로 삽입하며 AI로 재생성하지 않습니다.</p></section>
 <section class="panel"><h2>④ 앱처럼 설치하기</h2><button class="btn secondary" id="install" style="width:100%">앱 설치하기</button><p class="note">안드로이드 Chrome에서 ⋮ → 앱 설치 또는 홈 화면에 추가를 선택할 수 있습니다.</p></section>
 <p class="footer">비공식 팬메이드 도구 · 공식 투표 검증 아님 · 사진 권리자의 이용 조건을 확인해 주세요.</p></main>
 <script>
 const $=id=>document.getElementById(id), c=$('canvas'), ctx=c.getContext('2d');
-let img=null, installPrompt=null, sourceURL=null;
-const group=new Image();let groupReady=false;group.onload=()=>{groupReady=true;render()};group.onerror=()=>{$('status').textContent='단체 사진 파일(rescene-group.jpg)을 확인해 주세요.'};group.src='./rescene-group.jpg';
+let img=null, installPrompt=null, sourceURL=null, groupURL=null;
+const group=new Image();let groupReady=false;group.onload=()=>{groupReady=true;render()};group.onerror=()=>{$('status').textContent='선택한 단체 사진을 열지 못했습니다.'};
 const defaults=[['RESCENE (리센느)','글로벌 TOP10','3','21','46'],['ALPHA DRIVE ONE (알파드라이브원)','올해의 신인','3','46','72'],['REDRED','올해의 베스트송','3','72','100']];
 const today=new Date();$('date').value=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
 function build(){const old=[...document.querySelectorAll('.vote')].map(v=>Object.fromEntries([...v.querySelectorAll('input')].map(el=>[el.dataset.key,el.value])));
 $('votes').innerHTML='';for(let i=0;i<Number($('count').value);i++){const d=old[i]||Object.fromEntries(['name','category','number','start','end'].map((k,j)=>[k,defaults[i][j]]));const v=document.createElement('div');v.className='vote';v.innerHTML=`<h3>투표 ${i+1}</h3><label class="field">후보명<input data-key="name" maxlength="42"></label><div class="row"><label class="field">투표 부문<input data-key="category" maxlength="30"></label><label class="field">투표 횟수<input data-key="number" type="number" min="0" max="999"></label></div><div class="row"><label class="field">캡처 시작 위치 (%)<input data-key="start" type="number" min="0" max="100"></label><label class="field">캡처 끝 위치 (%)<input data-key="end" type="number" min="0" max="100"></label></div>`;
 for(const el of v.querySelectorAll('input')){el.value=d[el.dataset.key];el.addEventListener('change',render)}$('votes').append(v)}}
 $('count').addEventListener('change',()=>{build();render()});build();
+$('groupFile').addEventListener('change',e=>{const f=e.target.files[0];if(groupURL)URL.revokeObjectURL(groupURL);groupURL=null;groupReady=false;if(!f){$('groupPreview').style.display='none';render();return}groupURL=URL.createObjectURL(f);$('groupPreview').src=groupURL;$('groupPreview').style.display='block';group.src=groupURL});
 $('file').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;if(sourceURL)URL.revokeObjectURL(sourceURL);sourceURL=URL.createObjectURL(f);const next=new Image();next.onload=()=>{img=next;$('source').src=sourceURL;$('source').style.display='block';render()};next.onerror=()=>{$('status').textContent='이미지를 열지 못했습니다.'};next.src=sourceURL});
 function round(x,y,w,h,r,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
 function txt(t,x,y,size,color='#173621',weight=700,max=900){ctx.font=`${weight} ${size}px system-ui,sans-serif`;ctx.fillStyle=color;ctx.fillText(String(t),x,y,max)}
@@ -42,18 +43,18 @@ function crop(x,y,w,h,start,end){round(x,y,w,h,16,'#151515');if(!img){txt('원�
 let a=Math.max(0,Math.min(99,Number(start)||0))/100,b=Math.min(1,Math.max(a+.01,(Number(end)||100)/100)),sy=img.height*a,sh=img.height*(b-a);
 ctx.save();ctx.beginPath();ctx.roundRect(x,y,w,h,16);ctx.clip();const scale=Math.min(w/img.width,h/sh),dw=img.width*scale,dh=sh*scale;ctx.drawImage(img,0,sy,img.width,sh,x+(w-dw)/2,y+(h-dh)/2,dw,dh);ctx.restore()}
 function render(){const votes=[...document.querySelectorAll('.vote')].map(v=>Object.fromEntries([...v.querySelectorAll('input')].map(el=>[el.dataset.key,el.value]))),n=votes.length,show=$('showGroup').checked;
-const cardH=278,gap=19,groupH=show?465:0,footerH=105,headerH=225;c.width=1080;c.height=headerH+n*cardH+(n-1)*gap+groupH+footerH;
+const cardH=278,gap=19,groupH=(show&&groupReady)?465:0,footerH=105,headerH=225;c.width=1080;c.height=headerH+n*cardH+(n-1)*gap+groupH+footerH;
 const H=c.height,g=ctx.createLinearGradient(0,0,1080,H);g.addColorStop(0,'#f6fcf2');g.addColorStop(1,'#dcefdc');ctx.fillStyle=g;ctx.fillRect(0,0,1080,H);
 doodle(38,93);doodle(970,H-90);round(44,42,992,153,34,'#ffffff');txt('Melon',76,110,44,'#139947',800);txt($('title').value||'투표 인증',245,110,42,'#203525',800);txt('VOTE PROOF  ·  RESCENE ♡',77,163,24,'#649f73',700);
 const ds=($('date').value||'').replaceAll('-','.');round(778,125,220,46,23,'#e6f5e7');txt(ds,795,157,25,'#236a3b',700,190);
 let y=225;votes.forEach((v,i)=>{round(44,y,992,cardH-12,26,'#ffffff');round(63,y+17,60,44,12,'#36a663');txt(String(i+1).padStart(2,'0'),75,y+48,26,'#ffffff',800);
 crop(70,y+70,555,170,v.start,v.end);txt(v.name||'후보명',652,y+98,30,'#203525',800,355);txt(v.category||'투표 부문',652,y+143,23,'#65786a',500,355);
 round(652,y+169,330,53,25,'#e8f6e9');txt('투표 '+(v.number||'0')+'회',685,y+206,31,'#177b3b',800,270);y+=cardH+gap});
-if(show){round(44,y+2,992,groupH-20,26,'#ffffff');txt('RESCENE ♡',75,y+50,31,'#19884b',800);if(groupReady){const x=70,py=y+68,w=940,h=groupH-111;ctx.save();ctx.beginPath();ctx.roundRect(x,py,w,h,16);ctx.clip();ctx.fillStyle='#f2f1ec';ctx.fillRect(x,py,w,h);const scale=Math.min(w/group.width,h/group.height),dw=group.width*scale,dh=group.height*scale;ctx.drawImage(group,x+(w-dw)/2,py+(h-dh)/2,dw,dh);ctx.restore()}else txt('단체 사진을 불러오는 중입니다',85,y+170,25,'#61896a',500);y+=groupH}
+if(show&&groupReady){txt('RESCENE ♡',65,y+37,31,'#19884b',800);const x=35,py=y+53,w=1010,h=groupH-83;ctx.save();const scale=Math.min(w/group.width,h/group.height),dw=group.width*scale,dh=group.height*scale;ctx.drawImage(group,x+(w-dw)/2,py+(h-dh)/2,dw,dh);ctx.restore();y+=groupH}
 txt('팬메이드 인증 카드 · 공식 투표 검증 아님',55,H-48,22,'#65876d',500);
 $('status').textContent=img?'미리보기를 확인한 뒤 PNG로 저장하세요.':'샘플 미리보기입니다. 실제 인증에는 투표 캡처를 업로드하세요.'}
 $('render').onclick=render;$('showGroup').addEventListener('change',render);$('title').addEventListener('change',render);$('date').addEventListener('change',render);
-$('save').onclick=()=>{render();if(!img){$('status').textContent='먼저 실제 투표 캡처를 업로드해 주세요.';return}if($('showGroup').checked&&!groupReady){$('status').textContent='단체 사진을 불러오지 못했습니다. 파일을 확인해 주세요.';return}c.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='RESCENE-VOTE-'+$('date').value+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)},'image/png')};
+$('save').onclick=()=>{render();if(!img){$('status').textContent='먼저 실제 투표 캡처를 업로드해 주세요.';return}if($('showGroup').checked&&groupURL&&!groupReady){$('status').textContent='선택한 단체 사진을 불러오는 중입니다.';return}c.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='RESCENE-VOTE-'+$('date').value+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)},'image/png')};
 $('share').onclick=()=>{render();if(!img){$('status').textContent='먼저 투표 캡처를 업로드해 주세요.';return}if($('showGroup').checked&&!groupReady){$('status').textContent='단체 사진 파일을 확인해 주세요.';return}c.toBlob(async blob=>{if(!blob)return;const f=new File([blob],'RESCENE-VOTE.png',{type:'image/png'});try{if(navigator.canShare?.({files:[f]}))await navigator.share({files:[f],title:'RESCENE VOTE'});else $('status').textContent='공유를 지원하지 않습니다. PNG로 저장해 주세요.'}catch(e){if(e.name!=='AbortError')$('status').textContent='공유 실패. PNG 저장을 이용해 주세요.'}},'image/png')};
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e});$('install').onclick=async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null}else $('status').textContent='Chrome ⋮ 메뉴에서 앱 설치 또는 홈 화면에 추가를 선택하세요.'};
 if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(()=>{});render();
